@@ -1,0 +1,35 @@
+<h1> Multiple File Upload</h1>
+
+<div (click)="imagesSubmited=false" *ngIf="imagesSubmited" style="cursor:pointer; margin-bottom: 20px; font-size: 25px;  font-weight: 600">
+  Go Back
+</div>
+
+<input type="file" (change)="onUpload($event)" hidden id="uploadFileInput">
+<div *ngIf="!imagesSubmited" class="imageContainer">
+<div class="addImagesContainer" (click)="openUploadFile($event)">
+  +
+  Add Image
+</div>
+<div *ngFor="let url of urls; let i=index" class="addedImages">
+  <div class="deleteImage" (click)="removeImage(i)">X</div>
+    <img class="addedImages" [src]="url" alt="">
+</div>
+<div class="">
+    <button [disabled]="!urls.length" (click)="imagesSubmited=true;" class="submit">
+        Submit<ng-container *ngIf="!urls.length">(No Files to upload)</ng-container>
+    </button>
+    
+</div>
+
+</div>
+
+<div *ngIf="imagesSubmited">
+<span style="font-size:15px;">Files Ready to be uploaded in the  files array. You can Loop throught files array and append in Form Data, so that you can send it to you server.</span>
+
+<div style="font-size: 20px; font-weight:600;">
+  Files List 
+</div>
+<div *ngFor="let file of files">
+  <span>{{file.name}}</span>
+</div>
+</div>
