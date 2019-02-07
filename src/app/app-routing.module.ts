@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: 'multiplefileupload',
     loadChildren: './multiple-file-upload/multiple-file-upload.module#MultipleFileUploadModule'
+  },
+  {
+    path:'componentfactory',
+    loadChildren:'./componentfactory/componentfactory.module#ComponentfactoryModule'
   }
 ];
 
